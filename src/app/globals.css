@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #384C9C;
+  --color-secondary: #217AB1;
+  --color-tertiary: #37BDE1;
+
+  --font-montserrat: Montserrat, sans-serif;
+  --font-poppins: Poppins, sans-serif;
+}
+
+/* Base styles */
+@layer base {
+  body {
+    font-family: var(--font-poppins);
+    color: #171717;
+    background-color: #ffffff;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-montserrat);
+    font-weight: 700;
+  }
+}
