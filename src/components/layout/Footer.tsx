@@ -88,7 +88,7 @@ export function Footer() {
                             </li>
                             <li className="flex items-start">
                                 <Mail className="w-5 h-5 text-secondary mr-3 mt-1" />
-                                <span className="text-gray-400">koc@technicalsystem.com</span>
+                                <span className="text-gray-400">info@koctsystem.com</span>
                             </li>
                             <li className="flex items-start">
                                 <MapPin className="w-5 h-5 text-secondary mr-3 mt-1" />

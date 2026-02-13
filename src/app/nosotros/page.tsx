@@ -5,47 +5,58 @@ import { Handshake, Lightbulb, Leaf } from "lucide-react";
 
 export default function AboutPage() {
     return (
-        <main className="pt-28 md:pt-36 lg:pt-40 pb-20 bg-white min-h-screen">
-            <div className="container mx-auto px-4">
-                <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 md:gap-y-0 max-w-6xl mx-auto mb-16">
-                    {/* Block 1: Title + Intro (Mobile First, Desktop Top-Right) */}
-                    <div className="order-1 md:order-2 md:col-start-2 md:mb-8">
-                        <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">Sobre Nosotros</h1>
-                        <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                            Koc Technical System es una empresa especializada en el desarrollo, implantación y optimización de soluciones técnicas en procesos industriales donde el consumo de energía, el uso del agua y el control de la temperatura son críticos.
-                        </p>
-                    </div>
-
-                    {/* Block 2: Image (Mobile Second, Desktop Left Spanning) */}
-                    <div className="order-2 md:order-1 md:row-span-2 relative h-64 md:h-full min-h-[400px] bg-gray-100 rounded-2xl overflow-hidden shadow-md">
-                        <Image
-                            src="/images/about/foto-estudio.png"
-                            alt="Equipo KOC Technical System"
-                            fill
-                            className="object-cover"
-                        />
-                    </div>
-
-                    {/* Block 3: Mission/Vision (Mobile Third, Desktop Bottom-Right) */}
-                    <div className="order-3 md:order-3 md:col-start-2 space-y-6">
-                        {/* Mission */}
-                        <div className="bg-white p-6 rounded-xl border-l-4 border-secondary shadow-sm hover:shadow-md transition-shadow">
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">Misión</h3>
-                            <p className="text-gray-600 leading-relaxed">
-                                Implantar soluciones técnicas en procesos industriales que optimicen el uso de la energía, el agua y la temperatura, transformando la eficiencia obtenida en ahorro real y monetizable mediante Certificados de Ahorro Energético (CAE).
-                            </p>
-                        </div>
-
-                        {/* Vision */}
-                        <div className="bg-white p-6 rounded-xl border-l-4 border-primary shadow-sm hover:shadow-md transition-shadow">
-                            <h3 className="text-xl font-bold text-gray-900 mb-2">Visión</h3>
-                            <p className="text-gray-600 leading-relaxed">
-                                Consolidarnos como un referente técnico en la implantación de soluciones industriales que convierten la eficiencia energética e hídrica en valor económico sostenible para la industria.
-                            </p>
+        <main className="min-h-screen font-poppins text-gray-800 bg-white">
+            {/* 1. HERO SECTION */}
+            <section className="pt-32 pb-10 md:pt-36 md:pb-16 bg-gray-50 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-2/3 md:w-1/3 h-full bg-[#384C9C]/5 skew-x-12 transform origin-top-right pointer-events-none" />
+                <div className="container mx-auto px-4 md:px-6 relative z-10">
+                    <div className="max-w-[1200px] mx-auto">
+                        <div className="max-w-4xl">
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-montserrat text-primary mb-6 leading-tight">
+                                Sobre Nosotros
+                            </h1>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
+
+            <section className="py-20 bg-white">
+                <div className="container mx-auto px-4">
+                    <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                        {/* Block 2: Image */}
+                        <div className="relative h-full min-h-[400px] md:min-h-[500px] bg-gray-100 rounded-2xl overflow-hidden shadow-md">
+                            <Image
+                                src="/images/about/foto-estudio.png"
+                                alt="Equipo KOC Technical System"
+                                fill
+                                className="object-cover"
+                            />
+                        </div>
+
+                        {/* Block 3: Mission/Vision */}
+                        <div className="space-y-6">
+                            <p className="text-lg text-gray-600 font-light leading-relaxed">
+                                Koc Technical System es una empresa especializada en el desarrollo, implantación y optimización de soluciones técnicas en procesos industriales donde el consumo de energía, el uso del agua y el control de la temperatura son críticos.
+                            </p>
+                            {/* Mission */}
+                            <div className="bg-white p-8 rounded-xl border-l-4 border-secondary shadow-sm hover:shadow-md transition-shadow">
+                                <h3 className="text-2xl font-bold text-gray-900 mb-4">Misión</h3>
+                                <p className="text-gray-600 leading-relaxed text-lg">
+                                    Implantar soluciones técnicas en procesos industriales que optimicen el uso de la energía, el agua y la temperatura, transformando la eficiencia obtenida en ahorro real y monetizable mediante Certificados de Ahorro Energético (CAE).
+                                </p>
+                            </div>
+
+                            {/* Vision */}
+                            <div className="bg-white p-8 rounded-xl border-l-4 border-primary shadow-sm hover:shadow-md transition-shadow">
+                                <h3 className="text-2xl font-bold text-gray-900 mb-4">Visión</h3>
+                                <p className="text-gray-600 leading-relaxed text-lg">
+                                    Consolidarnos como un referente técnico en la implantación de soluciones industriales que convierten la eficiencia energética e hídrica en valor económico sostenible para la industria.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             {/* Key Metrics Section */}
             <div className="w-full bg-blue-50/30 border-y border-blue-100/50 py-8 md:py-16 mb-20">
@@ -82,7 +93,7 @@ export default function AboutPage() {
                 </div>
 
                 {/* Values Cards */}
-                <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16 md:mb-20 lg:mb-28">
                     {/* Card 1: Confianza */}
                     <div className="group p-8 bg-gray-50 rounded-xl transition-all duration-300 hover:bg-primary hover:text-white hover:-translate-y-1 hover:shadow-xl">
                         <div className="mb-6 text-secondary group-hover:text-white transition-colors duration-300">

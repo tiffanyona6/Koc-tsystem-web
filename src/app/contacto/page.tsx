@@ -3,15 +3,25 @@ import { Mail, MapPin, Phone, Clock } from "lucide-react";
 
 export default function ContactPage() {
     return (
-        <main className="pt-28 md:pt-36 lg:pt-40 pb-20 bg-gray-50 min-h-screen">
-            <div className="container mx-auto px-4">
-                <div className="max-w-6xl mx-auto mb-12 text-left">
-                    <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">Contacto</h1>
-                    <p className="text-xl text-gray-600">
-                        Estamos aquí para ayudarle. <span className="hidden md:inline">Cuéntenos su proyecto o necesidad y le responderemos con la mayor brevedad.</span>
-                    </p>
+        <main className="min-h-screen font-poppins text-gray-800 bg-white">
+            {/* 1. HERO SECTION */}
+            <section className="pt-32 pb-10 md:pt-36 md:pb-16 bg-gray-50 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-2/3 md:w-1/3 h-full bg-[#384C9C]/5 skew-x-12 transform origin-top-right pointer-events-none" />
+                <div className="container mx-auto px-4 md:px-6 relative z-10">
+                    <div className="max-w-[1200px] mx-auto">
+                        <div className="max-w-4xl">
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-montserrat text-primary mb-6 leading-tight">
+                                Contacto
+                            </h1>
+                            <p className="text-xl md:text-2xl text-gray-600 max-w-2xl font-light">
+                                Estamos aquí para ayudarle. <span className="hidden md:inline">Cuéntenos su proyecto o necesidad y le responderemos con la mayor brevedad.</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
+            </section>
 
+            <div className="container mx-auto px-4 py-20">
                 <div className="grid lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
                     {/* Left Column: Cards */}
                     <div className="lg:col-span-1 space-y-8">
@@ -25,8 +35,8 @@ export default function ContactPage() {
                                     </div>
                                     <div>
                                         <span className="block text-sm text-gray-500 mb-1">Teléfono</span>
-                                        <a href="tel:950531229" className="block text-lg font-semibold text-gray-900 hover:text-secondary">
-                                            950 531 229
+                                        <a href="tel:+34950531229" className="block text-lg font-semibold text-gray-900 hover:text-secondary">
+                                            +34 950 531 229
                                         </a>
                                         <a href="tel:+34606442514" className="block text-lg font-semibold text-gray-900 hover:text-secondary">
                                             +34 606 442 514
@@ -39,8 +49,8 @@ export default function ContactPage() {
                                     </div>
                                     <div>
                                         <span className="block text-sm text-gray-500 mb-1">Email</span>
-                                        <a href="mailto:koc@technicalsystem.com" className="text-lg font-semibold text-gray-900 hover:text-secondary">
-                                            koc@technicalsystem.com
+                                        <a href="mailto:info@koctsystem.com" className="text-lg font-semibold text-gray-900 hover:text-secondary">
+                                            info@koctsystem.com
                                         </a>
                                     </div>
                                 </li>

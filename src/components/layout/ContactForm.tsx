@@ -33,20 +33,34 @@ export function ContactForm() {
         e.preventDefault();
         setStatus("submitting");
 
-        // Simulate API call
-        setTimeout(() => {
-            setStatus("success");
-            setFormData({
-                name: "",
-                company: "",
-                country: "",
-                email: "",
-                phone: "",
-                interest: "",
-                message: "",
-                rgpd: false,
+        try {
+            const response = await fetch("https://formspree.io/f/mykdeogz", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
             });
-        }, 1500);
+
+            if (response.ok) {
+                setStatus("success");
+                setFormData({
+                    name: "",
+                    company: "",
+                    country: "",
+                    email: "",
+                    phone: "",
+                    interest: "",
+                    message: "",
+                    rgpd: false,
+                });
+            } else {
+                setStatus("error");
+            }
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            setStatus("error");
+        }
     };
 
     if (status === "success") {
@@ -68,6 +82,12 @@ export function ContactForm() {
 
     return (
         <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+            {status === "error" && (
+                <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-center gap-3 text-red-700 mb-4">
+                    <AlertCircle className="w-5 h-5 shrink-0" />
+                    <p className="text-sm">Hubo un error al enviar el mensaje. Por favor, inténtelo más tarde o contacte por teléfono.</p>
+                </div>
+            )}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                     <label htmlFor="name" className="text-sm font-medium text-gray-700">Nombre y apellidos *</label>

@@ -104,7 +104,7 @@ export function Header() {
 
                     <div className="hidden md:flex items-center ml-4">
                         <Link href="/oasis-project">
-                            <Button size="sm" className="shadow-md bg-primary hover:bg-primary/90 text-white font-semibold px-6">
+                            <Button size="sm" className="shadow-md bg-primary text-white border-2 border-primary hover:bg-white hover:text-primary transition-all duration-300 font-semibold px-6">
                                 Oasis Project
                             </Button>
                         </Link>
@@ -137,7 +137,7 @@ export function Header() {
                                         <Link
                                             href={link.href}
                                             className="text-base font-medium text-gray-700 hover:text-primary flex-grow"
-                                            onClick={() => !link.subItems && setIsOpen(false)}
+                                            onClick={() => setIsOpen(false)}
                                         >
                                             {link.name}
                                         </Link>
@@ -180,7 +180,7 @@ export function Header() {
                                 </div>
                             ))}
                             <Link href="/oasis-project" onClick={() => setIsOpen(false)}>
-                                <Button className="w-full mt-2 bg-primary hover:bg-primary/90 text-white font-bold">
+                                <Button className="w-full mt-2 bg-primary text-white border-2 border-primary hover:bg-white hover:text-primary transition-all duration-300 font-bold">
                                     Oasis Project
                                 </Button>
                             </Link>

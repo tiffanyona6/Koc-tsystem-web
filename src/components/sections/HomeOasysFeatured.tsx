@@ -11,7 +11,7 @@ export function HomeOasysFeatured() {
                 <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
 
                     {/* Content Column (Left on Desktop) */}
-                    <div className="w-full lg:w-1/2 order-2 lg:order-1 text-left">
+                    <div className="w-full lg:w-1/2 text-left">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-primary font-semibold text-xs tracking-wide uppercase mb-6">
                             <span className="relative flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
@@ -41,13 +41,13 @@ export function HomeOasysFeatured() {
 
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Link href="/oasis-project">
-                                <Button size="lg" className="shadow-lg min-w-[220px] justify-between group">
+                                <Button size="lg" className="shadow-lg min-w-[220px] justify-between group bg-primary text-white border-2 border-primary hover:bg-white hover:text-primary transition-all duration-300">
                                     Solicitar dossier
                                     <Lock className="w-4 h-4 ml-2 opacity-70 group-hover:opacity-100 transition-opacity" />
                                 </Button>
                             </Link>
                             <Link href="/oasis-project">
-                                <Button variant="outline" size="lg" className="min-w-[160px] group">
+                                <Button size="lg" className="min-w-[160px] group bg-white text-primary border-2 border-primary hover:bg-primary hover:text-white transition-all duration-300">
                                     Ver proyecto
                                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                                 </Button>
@@ -56,22 +56,17 @@ export function HomeOasysFeatured() {
                     </div>
 
                     {/* Image Column (Right on Desktop) */}
-                    <div className="w-full lg:w-1/2 order-1 lg:order-2">
-                        <div className="relative aspect-video lg:aspect-square bg-gradient-to-br from-gray-100 to-white rounded-3xl border border-gray-200 shadow-2xl p-8 flex items-center justify-center overflow-hidden group">
-                            {/* Abstract visual representation since we don't have the image yet */}
-                            <div className="absolute inset-0 bg-blue-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                    <div className="w-full lg:w-1/2 mt-8 lg:mt-0">
+                        <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] max-h-[650px] rounded-3xl shadow-2xl overflow-hidden group">
+                            {/* IMAGEN PRINCIPAL - Reemplazar la ruta src por la imagen real */}
+                            <img
+                                src="/images/oasis-hero-official.png"
+                                alt="Infraestructura del proyecto Oasis - Optimización hídrica industrial"
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            />
 
-                            <div className="text-center relative z-10 p-8 rounded-2xl border border-gray-100 bg-white/50 backdrop-blur-sm shadow-sm">
-                                <div className="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6 text-primary">
-                                    <TrendingUp className="w-10 h-10" />
-                                </div>
-                                <h4 className="text-xl font-bold text-gray-900 mb-2">Oasis Project</h4>
-                                <p className="text-gray-500 text-sm">Visualización del proyecto en desarrollo</p>
-                            </div>
-
-                            {/* Decorative elements */}
-                            <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
-                            <div className="absolute -top-10 -left-10 w-64 h-64 bg-blue-300/10 rounded-full blur-3xl"></div>
+                            {/* Optional: subtle overlay gradient for better integration if image is too bright */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
                     </div>
 

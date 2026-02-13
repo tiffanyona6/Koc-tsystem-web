@@ -100,7 +100,7 @@ export default function OasisContext() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                            <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white shadow-lg">
+                            <Button size="lg" className="w-full sm:w-auto bg-primary text-white border-2 border-primary hover:bg-white hover:text-primary transition-all duration-300 shadow-lg">
                                 Solicitar dossier
                                 {/* Import Lock from lucide-react if not already imported or available */}
                                 <ShieldCheck className="w-4 h-4 ml-2 opacity-70" />

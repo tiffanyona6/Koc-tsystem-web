@@ -38,14 +38,27 @@ const projects = [
 
 export default function ProjectsPage() {
     return (
-        <main className="pt-28 md:pt-36 lg:pt-40 pb-20 bg-gray-50 min-h-screen">
-            <div className="container mx-auto px-4">
-                <div className="text-center mb-12">
-                    <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">Proyectos Realizados</h1>
-                    <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                        Innovación aplicada. Conozca algunos de nuestros casos de éxito más relevantes.
-                    </p>
+        <main className="min-h-screen font-poppins text-gray-800 bg-white">
+            {/* 1. HERO SECTION */}
+            <section className="pt-32 pb-10 md:pt-36 md:pb-16 bg-gray-50 relative overflow-hidden">
+                {/* Lateral Graphic Element */}
+                <div className="absolute top-0 right-0 w-2/3 md:w-1/3 h-full bg-[#384C9C]/5 skew-x-12 transform origin-top-right pointer-events-none" />
+
+                <div className="container mx-auto px-4 md:px-6 relative z-10">
+                    <div className="max-w-[1200px] mx-auto">
+                        <div className="max-w-4xl">
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-montserrat text-primary mb-6 leading-tight">
+                                Proyectos Realizados
+                            </h1>
+                            <p className="text-xl md:text-2xl text-gray-600 max-w-2xl font-light">
+                                Innovación aplicada. Conozca algunos de nuestros casos de éxito más relevantes.
+                            </p>
+                        </div>
+                    </div>
                 </div>
+            </section>
+
+            <div className="container mx-auto px-4 py-20">
 
                 <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                     {projects.map((project, index) => (
