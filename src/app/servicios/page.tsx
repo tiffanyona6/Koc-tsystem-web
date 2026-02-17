@@ -27,37 +27,16 @@ export default function ServicesPage() {
         <main className="min-h-screen font-poppins text-gray-800 bg-white">
 
             {/* 1. HERO SECTION */}
-            <section className="pt-32 pb-10 md:pt-36 md:pb-16 bg-white relative overflow-hidden">
+            <section className="relative pt-32 pb-8 md:pt-40 md:pb-12 bg-gradient-to-b from-white to-blue-50 overflow-hidden">
                 {/* Lateral Graphic Element */}
                 <div className="absolute top-0 right-0 w-2/3 md:w-1/3 h-full bg-[#384C9C]/5 skew-x-12 transform origin-top-right pointer-events-none" />
 
                 <div className="container-custom relative z-10">
-                    <motion.div
-                        initial="hidden"
-                        animate="visible"
-                        variants={fadeInUp}
-                        className="max-w-4xl"
-                    >
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-montserrat text-primary mb-6 leading-tight">
+                    <div className="max-w-4xl">
+                        <h1 className="text-sm md:text-base font-bold text-gray-400 uppercase tracking-[0.2em] mb-0">
                             Servicios
                         </h1>
-                        <p className="text-xl md:text-2xl text-gray-600 mb-10 max-w-2xl font-light">
-                            Ingeniería aplicada a agua, energía y control de proceso con resultados medibles
-                        </p>
-
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <Link href="/contacto">
-                                <Button size="lg" className="w-full sm:w-auto px-8 shadow-lg">
-                                    Solicitar propuesta
-                                </Button>
-                            </Link>
-                            <Link href="/proyectos" className="hidden sm:block">
-                                <Button variant="outline" size="lg" className="px-8">
-                                    Ver proyectos
-                                </Button>
-                            </Link>
-                        </div>
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 

@@ -81,7 +81,7 @@ export function ContactForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+        <form onSubmit={handleSubmit} className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col gap-6 h-full">
             {status === "error" && (
                 <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-center gap-3 text-red-700 mb-4">
                     <AlertCircle className="w-5 h-5 shrink-0" />
@@ -96,7 +96,7 @@ export function ContactForm() {
                         id="name"
                         name="name"
                         required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
+                        className="w-full px-4 py-3 md:py-2 bg-gray-50 md:bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
                         value={formData.name}
                         onChange={handleChange}
                     />
@@ -109,7 +109,7 @@ export function ContactForm() {
                         id="company"
                         name="company"
                         required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
+                        className="w-full px-4 py-3 md:py-2 bg-gray-50 md:bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
                         value={formData.company}
                         onChange={handleChange}
                     />
@@ -124,7 +124,7 @@ export function ContactForm() {
                         id="email"
                         name="email"
                         required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
+                        className="w-full px-4 py-3 md:py-2 bg-gray-50 md:bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
                         value={formData.email}
                         onChange={handleChange}
                     />
@@ -137,7 +137,7 @@ export function ContactForm() {
                         id="phone"
                         name="phone"
                         required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
+                        className="w-full px-4 py-3 md:py-2 bg-gray-50 md:bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
                         value={formData.phone}
                         onChange={handleChange}
                     />
@@ -151,7 +151,7 @@ export function ContactForm() {
                         type="text"
                         id="country"
                         name="country"
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
+                        className="w-full px-4 py-3 md:py-2 bg-gray-50 md:bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all"
                         value={formData.country}
                         onChange={handleChange}
                     />
@@ -162,7 +162,7 @@ export function ContactForm() {
                     <select
                         id="interest"
                         name="interest"
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all appearance-none bg-white"
+                        className="w-full px-4 py-3 md:py-2 bg-gray-50 md:bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all appearance-none"
                         value={formData.interest}
                         onChange={handleChange}
                     >
@@ -177,13 +177,12 @@ export function ContactForm() {
                 </div>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-2 flex-grow flex flex-col">
                 <label htmlFor="message" className="text-sm font-medium text-gray-700">Mensaje</label>
                 <textarea
                     id="message"
                     name="message"
-                    rows={4}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all resize-none"
+                    className="w-full px-4 py-3 md:py-2 bg-gray-50 md:bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all resize-none flex-grow"
                     value={formData.message}
                     onChange={handleChange}
                 />
@@ -196,7 +195,7 @@ export function ContactForm() {
                         name="rgpd"
                         type="checkbox"
                         required
-                        className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"
+                        className="w-5 h-5 md:w-4 md:h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"
                         checked={formData.rgpd}
                         onChange={handleChange}
                     />

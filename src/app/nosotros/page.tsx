@@ -1,102 +1,66 @@
+"use client";
 
 import Image from "next/image";
 import { Handshake, Lightbulb, Leaf } from "lucide-react";
+import { AboutImageGallery } from "@/components/ui/AboutImageGallery";
 
 export default function AboutPage() {
     return (
-        <main className="min-h-screen font-poppins text-gray-800 bg-white overflow-hidden">
+        <main className="min-h-screen bg-white font-poppins text-gray-800 overflow-x-hidden">
 
             {/* 1. HERO SECTION - Consistent Design (Matching Projects Page) */}
-            <section className="pt-32 pb-10 md:pt-36 md:pb-16 bg-gray-50 relative overflow-hidden">
+            <section className="relative pt-32 pb-8 md:pt-40 md:pb-12 bg-gradient-to-b from-white to-blue-50">
                 {/* Lateral Graphic Element */}
                 <div className="absolute top-0 right-0 w-2/3 md:w-1/3 h-full bg-[#384C9C]/5 skew-x-12 transform origin-top-right pointer-events-none" />
 
                 <div className="container-custom relative z-10">
                     <div className="max-w-4xl">
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-montserrat text-primary mb-6 leading-tight">
+                        <h1 className="text-sm md:text-base font-bold text-gray-400 uppercase tracking-[0.2em] mb-0">
                             Sobre Nosotros
                         </h1>
-                        <p className="text-xl md:text-2xl text-gray-600 max-w-2xl font-light">
-                            Más allá de la consultoría: transformamos procesos industriales complejos en activos eficientes y rentables.
-                        </p>
                     </div>
                 </div>
             </section>
 
-            {/* 2. BLOQUE PRESENTACIÓN - Layered Composition */}
-            <section className="section-padding bg-white relative">
+            {/* 2. PRESENTATION BLOCK - "Modern Engineering" */}
+            {/* 2. PRESENTATION BLOCK - "Modern Engineering" */}
+            <section className="py-16 md:py-24 bg-white relative overflow-hidden">
                 <div className="container-custom">
-                    <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
-                        {/* Left Column - Layered Image Composition */}
-                        <div className="relative order-2 lg:order-1">
-                            {/* Dotted pattern decoration - Top Left */}
-                            <div className="absolute -top-10 -left-10 w-32 h-32 opacity-20"
-                                style={{ backgroundImage: 'radial-gradient(#384C9C 2px, transparent 2px)', backgroundSize: '12px 12px' }}>
+                        {/* Left Column - Content */}
+                        <div className="order-1 lg:order-1 space-y-6 md:space-y-8">
+                            <div>
+                                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight">
+                                    Cómo intervenimos en la industria
+                                </h2>
+                                <div className="w-14 h-0.5 bg-primary mt-4 mb-6"></div>
                             </div>
 
-                            {/* Blue decorative background block */}
-                            <div className="absolute -top-6 -left-6 w-3/4 h-3/4 bg-primary/10 rounded-3xl -z-10"></div>
-
-                            <div className="relative h-[400px] md:h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
-                                <Image
-                                    src="/images/about/foto-estudio.png"
-                                    alt="Instalaciones KOC Technical System"
-                                    fill
-                                    className="object-cover"
-                                />
-                            </div>
-
-                            {/* Dotted pattern decoration */}
-                            <div className="absolute -bottom-10 -right-10 w-32 h-32 opacity-20"
-                                style={{ backgroundImage: 'radial-gradient(#384C9C 2px, transparent 2px)', backgroundSize: '12px 12px' }}>
+                            <div className="text-lg text-gray-600 leading-relaxed space-y-6 text-left">
+                                <p>
+                                    Koc Technical System es una firma de ingeniería aplicada que interviene directamente en procesos industriales donde la eficiencia es determinante.
+                                </p>
+                                <p>
+                                    Analizamos y mejoramos sistemas energéticos, térmicos e hídricos desde el estudio técnico inicial hasta la implantación completa, desarrollando soluciones llave en mano adaptadas a cada instalación.
+                                </p>
+                                <p>
+                                    Nuestro trabajo se traduce en mejoras verificables y ahorros reales, que convertimos en Certificados de Ahorro Energético (CAE), garantizando un retorno económico tangible para nuestros clientes.
+                                </p>
                             </div>
                         </div>
 
-                        {/* Right Column - Content */}
-                        <div className="order-1 lg:order-2 space-y-10">
-                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
-                                Optimizamos lo esencial: <br />
-                                <span className="text-primary">Energía, Agua y Temperatura</span>
-                            </h2>
-
-                            <div className="text-lg text-gray-600 leading-relaxed space-y-6">
-                                <p>
-                                    Koc Technical System no es solo una consultora; somos el brazo técnico que integra soluciones llave en mano. Intervenimos directamente donde el consumo es crítico.
-                                </p>
-                                <p>
-                                    Nuestra metodología une la ingeniería de detalle con la ejecución práctica. No entregamos informes teóricos, entregamos <span className="font-semibold text-gray-900">sistemas funcionando y ahorros certificados.</span>
-                                </p>
-                            </div>
-
-                            {/* Modern Mission/Vision Tabs */}
-                            <div className="grid md:grid-cols-2 gap-6 mt-8">
-                                <div className="bg-gray-50 p-6 rounded-xl border border-gray-100 hover:border-primary/30 transition-colors">
-                                    <div className="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center text-secondary mb-4">
-                                        <Handshake className="w-5 h-5" />
-                                    </div>
-                                    <h3 className="font-bold text-gray-900 mb-2">Nuestra Misión</h3>
-                                    <p className="text-sm text-gray-600 leading-relaxed">
-                                        Convertir ineficiencias energéticas e hídricas en capital operativo monetizable (CAE) para la industria.
-                                    </p>
-                                </div>
-                                <div className="bg-gray-50 p-6 rounded-xl border border-gray-100 hover:border-primary/30 transition-colors">
-                                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4">
-                                        <Lightbulb className="w-5 h-5" />
-                                    </div>
-                                    <h3 className="font-bold text-gray-900 mb-2">Nuestra Visión</h3>
-                                    <p className="text-sm text-gray-600 leading-relaxed">
-                                        Ser el estándar técnico de referencia en descarbonización industrial rentable y pragmática.
-                                    </p>
-                                </div>
-                            </div>
+                        {/* Right Column - Image Gallery */}
+                        <div className="order-2 lg:order-2 w-full mt-8 lg:mt-0">
+                            <AboutImageGallery />
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* 3. MÉTRICAS - Bold Blue Band */}
-            <section className="bg-primary text-white section-padding relative overflow-hidden">
+
+            {/* 3. MÉTRICAS - Bold Blue Band (Smaller & Bottom) */}
+            <section className="bg-primary text-white py-10 md:py-12 relative overflow-hidden">
                 {/* Abstract background shapes */}
                 <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
                     <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full">
@@ -105,49 +69,58 @@ export default function AboutPage() {
                 </div>
 
                 <div className="container-custom relative z-10">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-white/20">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-y-10 md:gap-y-0 md:divide-x md:divide-white/20 text-center">
                         {[
-                            { number: "+26", label: "Años de Innovación", detail: "En el sector industrial" },
-                            { number: "+100", label: "Partners Activos", detail: "Clientes recurrentes" },
-                            { number: "+200", label: "Proyectos Entregados", detail: "Llave en mano" }
-                        ].map((metric, index) => (
-                            <div key={index} className="flex flex-col items-center px-4">
-                                <span className="text-6xl md:text-7xl font-bold tracking-tighter mb-2">{metric.number}</span>
-                                <span className="text-lg font-semibold text-blue-100 uppercase tracking-wider mb-1">{metric.label}</span>
+                            { number: "+26", label: "AÑOS DE EXPERIENCIA", detail: "En el sector industrial" },
+                            { number: "+100", label: "PARTNERS ACTIVOS", detail: "Clientes recurrentes" },
+                            { number: "+200", label: "PROYECTOS ENTREGADOS", detail: "Llave en mano" }
+                        ].map((metric, index, array) => (
+                            <div key={index} className="flex flex-col items-center px-4 relative">
+                                <span className="text-4xl md:text-6xl font-bold tracking-tighter mb-2">{metric.number}</span>
+                                <span className="text-base font-semibold text-blue-100 uppercase tracking-wider mb-1">{metric.label}</span>
                                 <span className="text-sm text-blue-200/80 font-light">{metric.detail}</span>
+
+                                {/* Mobile Divider (60% width, centered) - Not for last item */}
+                                {index !== array.length - 1 && (
+                                    <div className="absolute -bottom-5 w-[60%] h-px bg-white/20 md:hidden"></div>
+                                )}
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* 4. VALORES CORPORATIVOS - Clean Grid */}
+            {/* 4. MISSION & VISION - Clean Left Aligned */}
             <section className="section-padding bg-gray-50">
                 <div className="container-custom">
-                    <div className="text-center max-w-3xl mx-auto mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-montserrat">Nuestros Pilares</h2>
-                        <div className="h-1 w-20 bg-secondary mx-auto mb-6"></div>
-                        <p className="text-gray-600 text-lg">
-                            Principios que guían cada decisión técnica y comercial en Koc Technical System.
-                        </p>
-                    </div>
+                    <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
 
-                    <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                        {[
-                            { icon: Handshake, title: "Rigor Técnico", text: "No vendemos promesas. Vendemos ingeniería calculada, ejecutada y verificada." },
-                            { icon: Lightbulb, title: "Innovación Práctica", text: "Tecnología punta aplicada a problemas reales, sin sobreingeniería innecesaria." },
-                            { icon: Leaf, title: "Rentabilidad Sostenible", text: "La ecología industrial solo funciona si es económicamente viable para el cliente." }
-                        ].map((value, index) => (
-                            <div key={index} className="bg-white p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group border border-gray-100 hover:-translate-y-2">
-                                <div className="w-14 h-14 bg-gray-50 rounded-xl flex items-center justify-center text-gray-400 group-hover:bg-primary group-hover:text-white transition-colors duration-300 mb-6">
-                                    <value.icon className="w-7 h-7" />
+                        {/* Mission Card */}
+                        <div className="bg-white p-6 md:p-12 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 flex flex-col items-start text-left group">
+                            <div className="flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-0 mb-4 md:mb-6 w-full">
+                                <div className="w-12 h-12 md:w-16 md:h-16 bg-secondary/10 rounded-xl md:rounded-2xl flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-colors duration-300 shrink-0">
+                                    <Handshake className="w-6 h-6 md:w-8 md:h-8" />
                                 </div>
-                                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors">{value.title}</h3>
-                                <p className="text-gray-600 leading-relaxed text-[16px]">
-                                    {value.text}
-                                </p>
+                                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 font-montserrat md:mt-6">Misión</h3>
                             </div>
-                        ))}
+                            <p className="text-base md:text-lg text-gray-600 leading-relaxed">
+                                Optimizar energía, agua y temperatura en procesos industriales, convirtiendo la eficiencia en ahorro monetizable (CAE).
+                            </p>
+                        </div>
+
+                        {/* Vision Card */}
+                        <div className="bg-white p-6 md:p-12 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 flex flex-col items-start text-left group">
+                            <div className="flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-0 mb-4 md:mb-6 w-full">
+                                <div className="w-12 h-12 md:w-16 md:h-16 bg-primary/10 rounded-xl md:rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300 shrink-0">
+                                    <Lightbulb className="w-6 h-6 md:w-8 md:h-8" />
+                                </div>
+                                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 font-montserrat md:mt-6">Visión</h3>
+                            </div>
+                            <p className="text-base md:text-lg text-gray-600 leading-relaxed">
+                                Ser referente técnico en eficiencia industrial transformada en valor económico sostenible.
+                            </p>
+                        </div>
+
                     </div>
                 </div>
             </section>
