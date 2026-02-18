@@ -1,10 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { ArrowRight, Thermometer, Box, Cpu, Wifi, Settings, Droplets, FileText, Factory, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Thermometer, Box, Cpu, Wifi, Settings, Droplets, FileText, Factory, CheckCircle2, ChevronDown } from "lucide-react";
 import Link from "next/link";
-import { Carousel } from "@/components/ui/CarouselMarlenka"; // We will create a specific carousel config or just reuse the component if generic enough
+import { ProjectCarousel } from "@/components/ui/ProjectCarousel"; // Shared component
 
 // Animation variants
 const fadeInUp = {
@@ -23,6 +24,9 @@ const staggerContainer = {
 };
 
 export default function MarlenkaPage() {
+    const [isMagicBoxOpen, setIsMagicBoxOpen] = useState(false);
+    const [isMarlenkaOpen, setIsMarlenkaOpen] = useState(false);
+
     return (
         <main className="min-h-screen bg-white font-poppins text-gray-800 overflow-x-hidden">
 
@@ -78,9 +82,16 @@ export default function MarlenkaPage() {
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="w-full lg:w-1/2 relative flex items-center justify-center lg:justify-end h-[400px] lg:h-[500px]"
+                            className="w-full lg:w-1/2 relative flex items-center justify-center lg:justify-end lg:h-[500px]"
                         >
-                            <Carousel />
+                            <ProjectCarousel
+                                images={[
+                                    { src: "/images/projects/marlenka-magicbox.png", alt: "Marlenka 2.0 y Magic Box en planta" },
+                                    { src: "/images/projects/marlenka-magicbox.png", alt: "Detalle de proceso de espumación" },
+                                    { src: "/images/projects/marlenka-magicbox.png", alt: "Sistema de control térmico" }
+                                ]}
+                                className="w-full h-full"
+                            />
                         </motion.div>
 
                     </div>
@@ -138,39 +149,54 @@ export default function MarlenkaPage() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5 }}
-                            className="bg-blue-50/50 p-8 md:p-10 rounded-3xl border border-blue-100"
+                            className="bg-blue-50/50 p-6 md:p-10 rounded-3xl border border-blue-100"
                         >
-                            <h3 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2 uppercase tracking-wide border-b border-blue-200 pb-4">
-                                <FileText className="w-5 h-5 text-primary" />
-                                Ficha Técnica: Modelo MG200/1
-                            </h3>
+                            <button
+                                onClick={() => setIsMagicBoxOpen(!isMagicBoxOpen)}
+                                className="w-full flex items-center justify-between text-lg font-bold text-gray-900 mb-2 lg:mb-6 group lg:pointer-events-none lg:cursor-default"
+                            >
+                                <div className="flex items-center gap-3 text-left">
+                                    <FileText className="w-6 h-6 text-primary shrink-0" />
+                                    <span>Ficha Técnica: Modelo MG200/1</span>
+                                </div>
+                                <div className={`p-2 rounded-full bg-white text-primary transition-transform duration-300 lg:hidden ${isMagicBoxOpen ? 'rotate-180' : ''}`}>
+                                    <ChevronDown className="w-5 h-5" />
+                                </div>
+                            </button>
 
-                            <div className="space-y-4 text-sm font-poppins">
-                                <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
-                                    <span className="text-gray-600 font-medium">Rango Control Temp.</span>
-                                    <span className="text-gray-900 font-bold text-right">25°C - 90°C</span>
+                            <motion.div
+                                initial={false}
+                                animate={{ height: isMagicBoxOpen ? "auto" : 0, opacity: isMagicBoxOpen ? 1 : 0 }}
+                                transition={{ duration: 0.3 }}
+                                className="overflow-hidden lg:!h-auto lg:!opacity-100 block"
+                            >
+                                <div className="space-y-4 text-sm font-poppins pt-2 lg:pt-0">
+                                    <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
+                                        <span className="text-gray-600 font-medium">Rango Control Temp.</span>
+                                        <span className="text-gray-900 font-bold text-right">25°C - 90°C</span>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
+                                        <span className="text-gray-600 font-medium">Dimensiones</span>
+                                        <span className="text-gray-900 font-bold text-right">3150 x 2110 x 1300 mm</span>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
+                                        <span className="text-gray-600 font-medium">Ancho bloques</span>
+                                        <span className="text-gray-900 font-bold text-right">0 - 2,000 mm</span>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
+                                        <span className="text-gray-600 font-medium">Largo bloques</span>
+                                        <span className="text-gray-900 font-bold text-right">1000 - 3000 mm</span>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
+                                        <span className="text-gray-600 font-medium">Material Estructura</span>
+                                        <span className="text-gray-900 font-bold text-right">ACERO S275JR</span>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-4 pt-2">
+                                        <span className="text-gray-600 font-medium">Integración</span>
+                                        <span className="text-primary font-bold text-right">Sistema Marlenka 2.0</span>
+                                    </div>
                                 </div>
-                                <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
-                                    <span className="text-gray-600 font-medium">Dimensiones</span>
-                                    <span className="text-gray-900 font-bold text-right">3150 x 2110 x 1300 mm</span>
-                                </div>
-                                <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
-                                    <span className="text-gray-600 font-medium">Ancho bloques</span>
-                                    <span className="text-gray-900 font-bold text-right">0 - 2,000 mm</span>
-                                </div>
-                                <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
-                                    <span className="text-gray-600 font-medium">Largo bloques</span>
-                                    <span className="text-gray-900 font-bold text-right">1000 - 3000 mm</span>
-                                </div>
-                                <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
-                                    <span className="text-gray-600 font-medium">Material Estructura</span>
-                                    <span className="text-gray-900 font-bold text-right">ACERO S275JR</span>
-                                </div>
-                                <div className="grid grid-cols-2 gap-4 pt-2">
-                                    <span className="text-gray-600 font-medium">Integración</span>
-                                    <span className="text-primary font-bold text-right">Sistema Marlenka 2.0</span>
-                                </div>
-                            </div>
+                            </motion.div>
                         </motion.div>
 
                     </div>
@@ -227,55 +253,64 @@ export default function MarlenkaPage() {
                             </div>
                         </motion.div>
 
-                        {/* Specs Card Marlenka - Using Primary/Darker tone for contrast or consistency? 
-                           User asked for corporate blue, tone darker. 
-                           Bg-blue-50/50 is light blue. Let's try bg-slate-50 or keep blue-50 but ensure text is dark. 
-                           Actually user said "BLOQUE DE LA DERECHA TAMBIÉN LO PONEMOSA AZUL CORPORATIVO AUNQUE SEA UN TONO MÁS OSCURO(NO MUCHO)". 
-                           Let's use bg-blue-100/30 or similar to distinguish, or stick to consistent blue-50 with strong borders.
-                           "Y LO CENTRAMOS CON EL TEXTO" - The grid items-center takes care of centering vertically.
-                        */}
+                        {/* Specs Card Marlenka */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5 }}
-                            className="lg:order-1 bg-blue-50/50 p-8 md:p-10 rounded-3xl border border-blue-100"
+                            className="lg:order-1 bg-blue-50/50 p-6 md:p-10 rounded-3xl border border-blue-100"
                         >
-                            <h3 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2 uppercase tracking-wide border-b border-blue-200 pb-4">
-                                <FileText className="w-5 h-5 text-primary" />
-                                Ficha Técnica: Marlenka 2.0
-                            </h3>
+                            <button
+                                onClick={() => setIsMarlenkaOpen(!isMarlenkaOpen)}
+                                className="w-full flex items-center justify-between text-lg font-bold text-gray-900 mb-2 lg:mb-6 group lg:pointer-events-none lg:cursor-default"
+                            >
+                                <div className="flex items-center gap-3 text-left">
+                                    <FileText className="w-6 h-6 text-primary shrink-0" />
+                                    <span>Ficha Técnica: Marlenka 2.0</span>
+                                </div>
+                                <div className={`p-2 rounded-full bg-white text-primary transition-transform duration-300 lg:hidden ${isMarlenkaOpen ? 'rotate-180' : ''}`}>
+                                    <ChevronDown className="w-5 h-5" />
+                                </div>
+                            </button>
 
-                            <div className="space-y-4 text-sm font-poppins">
-                                <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
-                                    <span className="text-gray-600 font-medium">Control Temp.</span>
-                                    <span className="text-gray-900 font-bold text-right">25°C - 90°C</span>
+                            <motion.div
+                                initial={false}
+                                animate={{ height: isMarlenkaOpen ? "auto" : 0, opacity: isMarlenkaOpen ? 1 : 0 }}
+                                transition={{ duration: 0.3 }}
+                                className="overflow-hidden lg:!h-auto lg:!opacity-100 block"
+                            >
+                                <div className="space-y-4 text-sm font-poppins pt-2 lg:pt-0">
+                                    <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
+                                        <span className="text-gray-600 font-medium">Control Temp.</span>
+                                        <span className="text-gray-900 font-bold text-right">25°C - 90°C</span>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
+                                        <span className="text-gray-600 font-medium">Control Humedad</span>
+                                        <span className="text-gray-900 font-bold text-right">30% - 95% HR</span>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
+                                        <span className="text-gray-600 font-medium">Software</span>
+                                        <span className="text-gray-900 font-bold text-right">KOC TECHNICAL SYSTEM</span>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
+                                        <span className="text-gray-600 font-medium">Sist. Temperatura</span>
+                                        <span className="text-gray-900 font-bold text-right text-xs">AEROTERMIA (Agua Glicolada)</span>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
+                                        <span className="text-gray-600 font-medium">Sist. Humedad</span>
+                                        <span className="text-gray-900 font-bold text-right text-xs">NEBULIZACIÓN ULTRASÓNICA</span>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
+                                        <span className="text-gray-600 font-medium">Dimensiones</span>
+                                        <span className="text-gray-900 font-bold text-right">1800 x 1800 x 800 mm</span>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-4 pt-2">
+                                        <span className="text-gray-600 font-medium">Peso Total</span>
+                                        <span className="text-gray-900 font-bold text-right">800 kg</span>
+                                    </div>
                                 </div>
-                                <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
-                                    <span className="text-gray-600 font-medium">Control Humedad</span>
-                                    <span className="text-gray-900 font-bold text-right">30% - 95% HR</span>
-                                </div>
-                                <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
-                                    <span className="text-gray-600 font-medium">Software</span>
-                                    <span className="text-gray-900 font-bold text-right">KOC TECHNICAL SYSTEM</span>
-                                </div>
-                                <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
-                                    <span className="text-gray-600 font-medium">Sist. Temperatura</span>
-                                    <span className="text-gray-900 font-bold text-right text-xs">AEROTERMIA (Agua Glicolada)</span>
-                                </div>
-                                <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
-                                    <span className="text-gray-600 font-medium">Sist. Humedad</span>
-                                    <span className="text-gray-900 font-bold text-right text-xs">NEBULIZACIÓN ULTRASÓNICA</span>
-                                </div>
-                                <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
-                                    <span className="text-gray-600 font-medium">Dimensiones</span>
-                                    <span className="text-gray-900 font-bold text-right">1800 x 1800 x 800 mm</span>
-                                </div>
-                                <div className="grid grid-cols-2 gap-4 pt-2">
-                                    <span className="text-gray-600 font-medium">Peso Total</span>
-                                    <span className="text-gray-900 font-bold text-right">800 kg</span>
-                                </div>
-                            </div>
+                            </motion.div>
                         </motion.div>
 
                     </div>

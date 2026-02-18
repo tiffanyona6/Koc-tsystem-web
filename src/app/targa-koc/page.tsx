@@ -1,11 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { ArrowRight, Wind, ShieldCheck, Zap, Activity, Clock, Sliders, CheckCircle2, FileText, Settings } from "lucide-react";
+import { ArrowRight, Wind, ShieldCheck, Zap, Activity, Clock, Sliders, CheckCircle2, FileText, Settings, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { Carousel } from "@/components/ui/Carousel";
+import { ProjectCarousel } from "@/components/ui/ProjectCarousel";
 
 // Animation variants
 const fadeInUp = {
@@ -24,6 +25,9 @@ const staggerContainer = {
 };
 
 export default function TargaPage() {
+    // Default open on desktop is handled via CSS (lg:h-auto), but for mobile we default to closed (false)
+    const [isSpecsOpen, setIsSpecsOpen] = useState(false);
+
     return (
         <main className="min-h-screen bg-white font-poppins text-gray-800 overflow-x-hidden">
 
@@ -47,11 +51,11 @@ export default function TargaPage() {
                                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                                     <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                                 </span>
-                                Modelo MG12-25
+                                Modelo KOC12-25
                             </div>
 
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight font-montserrat tracking-tight mb-6">
-                                TARGA <span className="text-primary">MG</span>
+                                <span className="text-primary">TARGA</span> KOC
                             </h1>
 
                             <h2 className="text-xl md:text-2xl text-secondary font-medium mb-6 max-w-xl">
@@ -60,7 +64,7 @@ export default function TargaPage() {
 
                             <p className="text-base md:text-lg text-gray-600 mb-8 max-w-xl leading-relaxed">
                                 <strong className="text-primary block mb-2">Producto Estándar KOC.</strong>
-                                Targa MG es una solución propia nacida de la innovación interna para la higienización masiva. Gracias a su tecnología de <strong>atomización ultrasónica</strong>, garantiza una cobertura total en todas las superficies de la estancia, realizando un ciclo automático de nebulización, desinfección y posterior filtrado del aire.
+                                Targa KOC es una solución propia nacida de la innovación interna para la higienización masiva. Gracias a su tecnología de <strong>atomización ultrasónica</strong>, garantiza una cobertura total en todas las superficies de la estancia, realizando un ciclo automático de nebulización, desinfección y posterior filtrado del aire.
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
@@ -78,9 +82,16 @@ export default function TargaPage() {
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="w-full lg:w-1/2 relative flex items-center justify-center lg:justify-end h-[400px] lg:h-[500px]"
+                            className="w-full lg:w-1/2 relative flex items-center justify-center lg:justify-end lg:h-[500px]"
                         >
-                            <Carousel />
+                            <ProjectCarousel
+                                images={[
+                                    { src: "/images/projects/targa.png", alt: "Sistema Targa KOC" },
+                                    { src: "/images/projects/targa.png", alt: "Detalle de nebulización" },
+                                    { src: "/images/projects/targa.png", alt: "Vista lateral Targa" }
+                                ]}
+                                className="w-full h-full"
+                            />
                         </motion.div>
 
                     </div>
@@ -101,7 +112,7 @@ export default function TargaPage() {
                             Proceso Automático de Desinfección
                         </h2>
                         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                            Ciclo completo sin intervención manual. Targa MG filtra y renueva el aire tras el tratamiento, haciendo segura la entrada de personas en pocos minutos.
+                            Ciclo completo sin intervención manual. Targa KOC filtra y renueva el aire tras el tratamiento, haciendo segura la entrada de personas en pocos minutos.
                         </p>
                     </motion.div>
 
@@ -206,42 +217,54 @@ export default function TargaPage() {
                         >
                             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-16 -mt-16" />
 
-                            <h3 className="text-xl font-bold text-gray-900 mb-8 flex items-center gap-2">
-                                <FileText className="w-5 h-5 text-primary" />
-                                Especificaciones Técnicas
-                            </h3>
+                            <button
+                                onClick={() => setIsSpecsOpen(!isSpecsOpen)}
+                                className="w-full flex items-center justify-between text-xl font-bold text-gray-900 mb-2 lg:mb-8 group lg:pointer-events-none lg:cursor-default"
+                            >
+                                <div className="flex items-center gap-4 text-left">
+                                    <FileText className="w-7 h-7 text-primary shrink-0" />
+                                    <span>Especificaciones Técnicas</span>
+                                </div>
+                                <div className={`p-2 rounded-full bg-gray-50 text-primary transition-transform duration-300 lg:hidden ${isSpecsOpen ? 'rotate-180' : ''}`}>
+                                    <ChevronDown className="w-5 h-5" />
+                                </div>
+                            </button>
 
-                            <div className="space-y-0">
-                                <div className="flex justify-between items-center py-4 border-b border-gray-100">
-                                    <span className="text-gray-500 font-medium">Modelo</span>
-                                    <span className="text-gray-900 font-bold font-mono">MG12-25</span>
+                            <motion.div
+                                initial={false}
+                                animate={{ height: isSpecsOpen ? "auto" : 0, opacity: isSpecsOpen ? 1 : 0 }}
+                                transition={{ duration: 0.3 }}
+                                className="overflow-hidden lg:!h-auto lg:!opacity-100 block"
+                            >
+                                <div className="space-y-0">
+                                    <div className="flex justify-between items-center pb-4 pt-2 border-b border-gray-100">
+                                        <span className="text-gray-500 font-medium">Modelo</span>
+                                        <span className="text-gray-900 font-bold font-mono">KOC12-25</span>
+                                    </div>
+                                    <div className="flex justify-between items-center py-4 border-b border-gray-100">
+                                        <span className="text-gray-500 font-medium">Tensión</span>
+                                        <span className="text-gray-900 font-bold font-mono">230 V</span>
+                                    </div>
+                                    <div className="flex justify-between items-center py-4 border-b border-gray-100">
+                                        <span className="text-gray-500 font-medium">Potencia total</span>
+                                        <span className="text-gray-900 font-bold font-mono">493 W</span>
+                                    </div>
+                                    <div className="flex justify-between items-center py-4 border-b border-gray-100">
+                                        <span className="text-gray-500 font-medium">Peso</span>
+                                        <span className="text-gray-900 font-bold font-mono">65 kg</span>
+                                    </div>
+                                    <div className="flex justify-between items-center py-4">
+                                        <span className="text-gray-500 font-medium">Tecnología</span>
+                                        <span className="text-primary font-bold text-sm bg-blue-50 px-3 py-1 rounded-full">Nebulización Ultrasónica</span>
+                                    </div>
                                 </div>
-                                <div className="flex justify-between items-center py-4 border-b border-gray-100">
-                                    <span className="text-gray-500 font-medium">Tensión</span>
-                                    <span className="text-gray-900 font-bold font-mono">230 V</span>
-                                </div>
-                                <div className="flex justify-between items-center py-4 border-b border-gray-100">
-                                    <span className="text-gray-500 font-medium">Potencia total</span>
-                                    <span className="text-gray-900 font-bold font-mono">493 W</span>
-                                </div>
-                                <div className="flex justify-between items-center py-4 border-b border-gray-100">
-                                    <span className="text-gray-500 font-medium">Peso</span>
-                                    <span className="text-gray-900 font-bold font-mono">65 kg</span>
-                                </div>
-                                <div className="flex justify-between items-center py-4">
-                                    <span className="text-gray-500 font-medium">Tecnología</span>
-                                    <span className="text-primary font-bold text-sm bg-blue-50 px-3 py-1 rounded-full">Nebulización Ultrasónica</span>
-                                </div>
-                            </div>
 
-                            <div className="mt-8 pt-6 border-t border-gray-50 text-center">
-                                <p className="text-xs text-gray-400 mb-4">
-                                    * Especificaciones sujetas a cambios por mejoras técnicas.
-                                </p>
-                                <Link href="/contacto" className="inline-flex items-center text-primary font-bold hover:gap-2 transition-all group">
-                                    Descargar ficha completa <ArrowRight className="w-4 h-4 ml-1 group-hover:ml-0" />
-                                </Link>
-                            </div>
+                                <div className="mt-8 pt-6 border-t border-gray-50 text-center">
+                                    <p className="text-xs text-gray-400">
+                                        * Especificaciones sujetas a cambios por mejoras técnicas.
+                                    </p>
+                                </div>
+                            </motion.div>
                         </motion.div>
 
                     </div>
@@ -262,12 +285,12 @@ export default function TargaPage() {
                             Asegure sus instalaciones hoy
                         </h2>
                         <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-                            Targa MG es el sistema de desinfección más completo del mercado. Proteja a su personal y clientes con tecnología de vanguardia.
+                            Targa KOC es el sistema de desinfección más completo del mercado. Proteja a su personal y clientes con tecnología de vanguardia.
                         </p>
 
                         <Link href="/contacto">
                             <Button size="lg" className="w-full sm:w-auto bg-white text-primary hover:bg-gray-100 text-lg px-8 py-4 h-auto shadow-xl font-bold">
-                                Contactar departamento comercial
+                                Contactar
                             </Button>
                         </Link>
                     </motion.div>

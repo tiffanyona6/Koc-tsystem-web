@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { ArrowRight, Download, Droplets, Zap, TrendingUp, Factory, Settings, ShieldCheck, Hotel, WashingMachine, Utensils, Activity, Home } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { CarouselOasis } from "@/components/ui/CarouselOasis";
+import { ProjectCarousel } from "@/components/ui/ProjectCarousel";
 
 // Animation variants
 const fadeInUp = {
@@ -112,9 +112,16 @@ export default function OasisContext() {
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="w-full lg:w-1/2 relative flex items-center justify-center lg:justify-end h-[400px] lg:h-[500px]"
+                            className="w-full lg:w-1/2 relative flex items-center justify-center lg:justify-end lg:h-[500px]"
                         >
-                            <CarouselOasis />
+                            <ProjectCarousel
+                                images={[
+                                    { src: "/images/oasis-hero-official.png", alt: "Oasis Project Overview" },
+                                    { src: "/images/oasis-hero-official.png", alt: "Sistema de Recuperación Térmica" },
+                                    { src: "/images/oasis-hero-official.png", alt: "Integración Hídrica" }
+                                ]}
+                                className="w-full h-full"
+                            />
                         </motion.div>
 
                     </div>

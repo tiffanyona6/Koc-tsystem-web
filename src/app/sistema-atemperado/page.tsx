@@ -1,10 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { ArrowRight, Thermometer, Factory, Activity, Sliders, CheckCircle2, FileText, ShieldCheck, Flame, Zap } from "lucide-react";
+import { ArrowRight, Thermometer, Factory, Activity, Sliders, CheckCircle2, FileText, ShieldCheck, Flame, Zap, ChevronDown } from "lucide-react";
 import Link from "next/link";
-import { CarouselAtemperado } from "@/components/ui/CarouselAtemperado";
+import { ProjectCarousel } from "@/components/ui/ProjectCarousel";
 
 // Animation variants
 const fadeInUp = {
@@ -23,6 +24,8 @@ const staggerContainer = {
 };
 
 export default function AtemperadoPage() {
+    const [isSpecsOpen, setIsSpecsOpen] = useState(false);
+
     return (
         <main className="min-h-screen bg-white font-poppins text-gray-800 overflow-x-hidden">
 
@@ -77,9 +80,16 @@ export default function AtemperadoPage() {
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="w-full lg:w-1/2 relative flex items-center justify-center lg:justify-end h-[400px] lg:h-[500px]"
+                            className="w-full lg:w-1/2 relative flex items-center justify-center lg:justify-end lg:h-[500px]"
                         >
-                            <CarouselAtemperado />
+                            <ProjectCarousel
+                                images={[
+                                    { src: "/images/projects/proyecto-sistema-automatico.png", alt: "Sistema de atemperado de resina" },
+                                    { src: "/images/projects/proyecto-sistema-automatico.png", alt: "Detalle de tuberías y válvulas" },
+                                    { src: "/images/projects/proyecto-sistema-automatico.png", alt: "Panel de control" }
+                                ]}
+                                className="w-full h-full"
+                            />
                         </motion.div>
 
                     </div>
@@ -134,37 +144,52 @@ export default function AtemperadoPage() {
                             transition={{ duration: 0.5 }}
                             className="bg-blue-50/50 p-8 md:p-10 rounded-3xl border border-blue-100"
                         >
-                            <h3 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2 uppercase tracking-wide border-b border-blue-200 pb-4">
-                                <FileText className="w-5 h-5 text-primary" />
-                                Ficha Técnica: Serie MG
-                            </h3>
+                            <button
+                                onClick={() => setIsSpecsOpen(!isSpecsOpen)}
+                                className="w-full flex items-center justify-between text-lg font-bold text-gray-900 mb-2 lg:mb-6 group lg:pointer-events-none lg:cursor-default"
+                            >
+                                <div className="flex items-center gap-3 text-left">
+                                    <FileText className="w-6 h-6 text-primary shrink-0" />
+                                    <span>Ficha Técnica: Serie KOC</span>
+                                </div>
+                                <div className={`p-2 rounded-full bg-white text-primary transition-transform duration-300 lg:hidden ${isSpecsOpen ? 'rotate-180' : ''}`}>
+                                    <ChevronDown className="w-5 h-5" />
+                                </div>
+                            </button>
 
-                            <div className="space-y-4 text-sm font-poppins">
-                                <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
-                                    <span className="text-gray-600 font-medium">Modelos</span>
-                                    <span className="text-gray-900 font-bold text-right">MG-200 / 300 / 500</span>
+                            <motion.div
+                                initial={false}
+                                animate={{ height: isSpecsOpen ? "auto" : 0, opacity: isSpecsOpen ? 1 : 0 }}
+                                transition={{ duration: 0.3 }}
+                                className="overflow-hidden lg:!h-auto lg:!opacity-100 block"
+                            >
+                                <div className="space-y-4 text-sm font-poppins pt-2 lg:pt-0">
+                                    <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
+                                        <span className="text-gray-600 font-medium">Modelos</span>
+                                        <span className="text-gray-900 font-bold text-right">KOC 200 / 300 / 500</span>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
+                                        <span className="text-gray-600 font-medium">Rango Temperaturas</span>
+                                        <span className="text-gray-900 font-bold text-right">25°C - 90°C</span>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
+                                        <span className="text-gray-600 font-medium">Software Control</span>
+                                        <span className="text-gray-900 font-bold text-right">KOC SYSTEM 4.0</span>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
+                                        <span className="text-gray-600 font-medium">Sist. Control Temp.</span>
+                                        <span className="text-gray-900 font-bold text-right">AEROTERMIA</span>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
+                                        <span className="text-gray-600 font-medium">Dimensiones</span>
+                                        <span className="text-gray-900 font-bold text-right">2500 x 1200 x 2400 mm</span>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-4 pt-2">
+                                        <span className="text-gray-600 font-medium">Peso Total*</span>
+                                        <span className="text-gray-900 font-bold text-right">800 kg (Modelo KOC 300)</span>
+                                    </div>
                                 </div>
-                                <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
-                                    <span className="text-gray-600 font-medium">Rango Temperaturas</span>
-                                    <span className="text-gray-900 font-bold text-right">25°C - 90°C</span>
-                                </div>
-                                <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
-                                    <span className="text-gray-600 font-medium">Software Control</span>
-                                    <span className="text-gray-900 font-bold text-right">KOC SYSTEM 4.0</span>
-                                </div>
-                                <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
-                                    <span className="text-gray-600 font-medium">Sist. Control Temp.</span>
-                                    <span className="text-gray-900 font-bold text-right">AEROTERMIA</span>
-                                </div>
-                                <div className="grid grid-cols-2 gap-4 pb-4 border-b border-blue-100/50">
-                                    <span className="text-gray-600 font-medium">Dimensiones</span>
-                                    <span className="text-gray-900 font-bold text-right">2500 x 1200 x 2400 mm</span>
-                                </div>
-                                <div className="grid grid-cols-2 gap-4 pt-2">
-                                    <span className="text-gray-600 font-medium">Peso Total*</span>
-                                    <span className="text-gray-900 font-bold text-right">800 kg (Modelo MG-300)</span>
-                                </div>
-                            </div>
+                            </motion.div>
                         </motion.div>
 
                     </div>
@@ -242,7 +267,7 @@ export default function AtemperadoPage() {
 
                         <Link href="/contacto">
                             <Button size="lg" className="w-full sm:w-auto bg-white text-primary hover:bg-gray-100 text-lg px-8 py-4 h-auto shadow-xl font-bold">
-                                Contactar con ingeniería
+                                Contactar
                             </Button>
                         </Link>
                     </motion.div>
