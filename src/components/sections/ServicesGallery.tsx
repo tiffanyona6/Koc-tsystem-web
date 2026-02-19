@@ -1,5 +1,6 @@
 "use client";
 
+import { ServicesGridCarousel } from "@/components/ui/ServicesGridCarousel";
 import { ProjectCarousel } from "@/components/ui/ProjectCarousel";
 
 const galleryImages = [
@@ -25,11 +26,17 @@ export function ServicesGallery() {
                     </p>
                 </div>
 
-                <div className="max-w-5xl mx-auto">
+                {/* Mobile View: Original Carousel */}
+                <div className="block md:hidden max-w-5xl mx-auto">
                     <ProjectCarousel
                         images={galleryImages}
-                        className="w-full h-auto aspect-[4/5] md:aspect-[16/9] shadow-xl rounded-2xl"
+                        className="w-full h-auto aspect-[4/5] shadow-xl rounded-2xl"
                     />
+                </div>
+
+                {/* Desktop View: Grid Carousel */}
+                <div className="hidden md:block max-w-6xl mx-auto relative px-12">
+                    <ServicesGridCarousel images={galleryImages} />
                 </div>
             </div>
         </section>

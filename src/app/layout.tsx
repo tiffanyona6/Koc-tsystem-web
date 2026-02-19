@@ -3,6 +3,7 @@ import { Montserrat, Poppins } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CookieConsent } from "@/components/layout/CookieConsent";
+import { ScrollToTop } from "@/components/ui/ScrollToTop";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -35,6 +36,7 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <ScrollToTop />
         <CookieConsent />
         <Footer />
       </body>

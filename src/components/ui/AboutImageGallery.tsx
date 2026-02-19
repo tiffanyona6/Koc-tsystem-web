@@ -6,12 +6,12 @@ import { cn } from "@/lib/utils";
 
 const images = [
     {
-        src: "/images/projects/proyecto-sistema-automatico.png",
-        alt: "Instalación industrial avanzada",
+        src: "/images/about/sobrenosotros-web-koc.webp",
+        alt: "Equipo KOC en instalaciones industriales",
     },
     {
-        src: "/images/projects/targa.png",
-        alt: "Equipo técnico trabajando en planta",
+        src: "/images/about/oficina-web-koc.webp",
+        alt: "Oficina técnica de ingeniería KOC",
     },
     {
         src: "/images/projects/marlenka-magicbox.png",
@@ -76,7 +76,7 @@ export function AboutImageGallery() {
                 </div>
 
                 {/* Image 3: Small Horizontal - Bottom Overlap */}
-                <div className="absolute bottom-8 right-[5%] w-[45%] h-[25%] rounded-[20px] overflow-hidden shadow-xl border-4 border-white z-20 transform transition-transform duration-700 hover:scale-[1.03]">
+                <div className="absolute bottom-4 right-[2%] w-[50%] h-[35%] rounded-[20px] overflow-hidden shadow-xl border-4 border-white z-20 transform transition-transform duration-700 hover:scale-[1.03]">
                     <Image
                         src={images[2].src}
                         alt={images[2].alt}

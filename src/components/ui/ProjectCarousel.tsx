@@ -75,7 +75,14 @@ export function ProjectCarousel({ images, className }: ProjectCarouselProps) {
                             priority={index === 0}
                         />
                         {/* Optional gradient for text readability if needed */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none opacity-50" />
+                        <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none opacity-90" />
+
+                        {/* Title Overlay */}
+                        <div className="hidden md:block absolute bottom-0 left-0 w-full p-6 md:p-10 z-20">
+                            <h3 className="text-xl md:text-3xl font-bold text-white font-montserrat drop-shadow-md">
+                                {img.alt}
+                            </h3>
+                        </div>
                     </div>
                 ))}
             </div>
@@ -97,16 +104,16 @@ export function ProjectCarousel({ images, className }: ProjectCarouselProps) {
             </button>
 
             {/* Dots Indicators - Always visible */}
-            <div className="flex justify-center gap-2 mt-4">
+            <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-30">
                 {images.map((_, index) => (
                     <button
                         key={index}
                         onClick={() => scrollTo(index)}
                         className={cn(
-                            "rounded-full transition-all duration-300",
+                            "rounded-full transition-all duration-300 shadow-sm border border-white/20",
                             activeIndex === index
-                                ? "bg-[#384C9C] w-12 h-3"
-                                : "bg-gray-300 w-3 h-3 hover:bg-gray-400"
+                                ? "bg-white w-8 h-2"
+                                : "bg-white/50 w-2 h-2 hover:bg-white/80"
                         )}
                         aria-label={`Go to slide ${index + 1}`}
                     />
