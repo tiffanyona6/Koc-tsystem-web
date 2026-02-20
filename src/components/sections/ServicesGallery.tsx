@@ -5,7 +5,7 @@ import { ProjectCarousel } from "@/components/ui/ProjectCarousel";
 
 const galleryImages = [
     { src: "/images/projects/proyecto-marleka-magicbox-web-koc.webp", alt: "Proyecto Marlenka y Magic Box" },
-    { src: "/images/projects/proyecto-sistema automatico-web-koc.webp", alt: "Sistema Automático de Atemperado" },
+    { src: "/images/projects/proyecto-sistema automatico-web-koc.webp", alt: "Sistema de Atemperado Automático" },
     { src: "/images/projects/proyecto-targa-web-koc.webp", alt: "Proyecto Targa MG" },
     { src: "/images/projects/proyecto-twt-web-koc.webp", alt: "Sistema TWT - Agua 4.0" },
     { src: "/images/projects/proyecto-marleka-magicbox-web-koc.webp", alt: "Detalle Instalación Industrial" },

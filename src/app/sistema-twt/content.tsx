@@ -29,8 +29,22 @@ export default function TwtPage() {
     return (
         <main className="min-h-screen bg-white font-poppins text-gray-800 overflow-x-hidden">
 
+            {/* ENCABEZADO PROYECTOS REALIZADOS */}
+            <section className="relative pt-32 pb-8 md:pt-40 md:pb-12 bg-gradient-to-b from-white to-blue-50 overflow-hidden">
+                {/* Lateral Graphic Element */}
+                <div className="absolute top-0 right-0 w-2/3 md:w-1/3 h-full bg-[#384C9C]/5 skew-x-12 transform origin-top-right pointer-events-none" />
+
+                <div className="container-custom relative z-10">
+                    <div className="max-w-4xl">
+                        <h1 className="text-sm md:text-base font-bold text-gray-400 uppercase tracking-[0.2em] mb-0">
+                            Proyectos Realizados
+                        </h1>
+                    </div>
+                </div>
+            </section>
+
             {/* 1. HERO SECTION */}
-            <section className="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-gray-50">
+            <section className="relative py-12 lg:py-16 overflow-hidden bg-gray-50">
                 {/* Background Decor - Blue Gradient */}
                 <div className="absolute top-0 right-0 w-3/4 h-full bg-gradient-to-l from-blue-50/50 to-transparent skew-x-[-12deg] origin-top opacity-60 pointer-events-none" />
 
@@ -42,7 +56,7 @@ export default function TwtPage() {
                             initial="hidden"
                             animate="visible"
                             variants={fadeInUp}
-                            className="w-full lg:w-1/2 relative z-20"
+                            className="w-full lg:w-1/2 relative z-20 order-2 lg:order-1 mt-4 lg:mt-0"
                         >
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-blue-100 shadow-sm text-primary font-semibold text-xs tracking-wide uppercase mb-6">
                                 <span className="relative flex h-2 w-2">
@@ -80,15 +94,15 @@ export default function TwtPage() {
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="w-full lg:w-1/2 relative flex items-center justify-center lg:justify-end lg:h-[500px]"
+                            className="w-[calc(100%+2rem)] -ml-4 sm:w-full sm:ml-0 lg:w-1/2 relative flex items-center justify-center lg:justify-end lg:h-[500px] order-1 lg:order-2 mb-2 lg:mb-0"
                         >
                             <ProjectCarousel
                                 images={[
                                     { src: "/images/projects/proyecto-twt-web-koc.webp", alt: "Sistema TWT" },
-                                    { src: "/images/projects/proyecto-twt-web-koc.webp", alt: "Planta de tratamiento TWT" },
-                                    { src: "/images/projects/proyecto-twt-web-koc.webp", alt: "Detalle de filtrado" }
+                                    { src: "/images/projects/proyecto-sistema-twt-web-koc.webp", alt: "Detalles del Sistema TWT" },
+                                    { src: "/images/projects/proyecto-proceso-twt-web-koc.webp", alt: "Proceso TWT" }
                                 ]}
-                                className="w-full h-full"
+                                className="w-full !aspect-[4/3] md:!aspect-[4/5] lg:!aspect-auto lg:h-full"
                             />
                         </motion.div>
 

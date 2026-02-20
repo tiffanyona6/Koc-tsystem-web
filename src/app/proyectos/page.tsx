@@ -21,7 +21,7 @@ const projects = [
         title: "TARGA KOC",
         category: "Desinfección",
         description: "Sistema de desinfección por nebulización ultrasónica para entornos críticos.",
-        image: "/images/projects/proyecto-targa-web-koc.webp",
+        image: "/images/projects/targa-centro-salud-web-koc.webp",
         href: "/targa-koc",
     },
     {
@@ -39,7 +39,7 @@ const projects = [
         href: "/sistema-twt",
     },
     {
-        title: "Sistema Automático de Atemperado",
+        title: "Sistema de Atemperado Automático",
         category: "Fluidos",
         description: "Solución de atemperado de fluidos para procesos industriales de alta precisión.",
         image: "/images/projects/proyecto-sistema automatico-web-koc.webp",

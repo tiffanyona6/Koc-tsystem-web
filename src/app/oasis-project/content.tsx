@@ -66,8 +66,22 @@ export default function OasisContext() {
     return (
         <main className="min-h-screen bg-white font-poppins text-gray-800 overflow-x-hidden">
 
+            {/* ENCABEZADO PROYECTOS REALIZADOS */}
+            <section className="relative pt-32 pb-8 md:pt-40 md:pb-12 bg-gradient-to-b from-white to-blue-50 overflow-hidden">
+                {/* Lateral Graphic Element */}
+                <div className="absolute top-0 right-0 w-2/3 md:w-1/3 h-full bg-[#384C9C]/5 skew-x-12 transform origin-top-right pointer-events-none" />
+
+                <div className="container-custom relative z-10">
+                    <div className="max-w-4xl">
+                        <h1 className="text-sm md:text-base font-bold text-gray-400 uppercase tracking-[0.2em] mb-0">
+                            Proyectos Realizados
+                        </h1>
+                    </div>
+                </div>
+            </section>
+
             {/* 1. HERO SECTION */}
-            <section className="relative pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden bg-gray-50">
+            <section className="relative py-12 lg:py-16 overflow-hidden bg-gray-50">
                 {/* Background Decor */}
                 <div className="absolute top-0 right-0 w-3/4 h-full bg-gradient-to-l from-blue-50/50 to-transparent skew-x-[-12deg] origin-top opacity-60 pointer-events-none" />
 
@@ -79,7 +93,7 @@ export default function OasisContext() {
                             initial="hidden"
                             animate="visible"
                             variants={fadeInUp}
-                            className="w-full lg:w-1/2 relative z-20"
+                            className="w-full lg:w-1/2 relative z-20 order-2 lg:order-1 mt-4 lg:mt-0"
                         >
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-blue-100 shadow-sm text-primary font-semibold text-xs tracking-wide uppercase mb-6">
                                 <span className="relative flex h-2 w-2">
@@ -117,21 +131,23 @@ export default function OasisContext() {
                             </div>
                         </motion.div>
 
-                        {/* Visual Content - Carousel */}
+                        {/* Visual Content - Single Image */}
                         <motion.div
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="w-full lg:w-1/2 relative flex items-center justify-center lg:justify-end lg:h-[500px]"
+                            className="w-[calc(100%+2rem)] -ml-4 sm:w-full sm:ml-0 lg:w-1/2 relative flex items-center justify-center lg:justify-end lg:h-[500px] order-1 lg:order-2 mb-2 lg:mb-0"
                         >
-                            <ProjectCarousel
-                                images={[
-                                    { src: "/images/projects/proyecto-oasis-project-web-koc.webp", alt: "Oasis Project Overview" },
-                                    { src: "/images/projects/proyecto-oasis-project-web-koc.webp", alt: "Sistema de Recuperación Térmica" },
-                                    { src: "/images/projects/proyecto-oasis-project-web-koc.webp", alt: "Integración Hídrica" }
-                                ]}
-                                className="w-full h-full"
-                            />
+                            <div className="relative w-full aspect-[4/3] md:aspect-[4/5] lg:aspect-auto lg:h-full rounded-2xl overflow-hidden shadow-xl border border-gray-100">
+                                <Image
+                                    src="/images/projects/proyecto-oasis-project-web-koc.webp"
+                                    alt="Oasis Project"
+                                    fill
+                                    className="object-cover"
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                    priority
+                                />
+                            </div>
                         </motion.div>
 
                     </div>
@@ -372,39 +388,50 @@ export default function OasisContext() {
             </section>
 
             {/* 6. SECTORES OBJETIVO */}
-            <section className="section-padding bg-white">
-                <div className="container-custom">
-                    <motion.h2
+            <section className="section-padding bg-gray-50 border-y border-gray-100 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-1/3 h-full bg-blue-50/50 skew-x-[-12deg] -translate-y-1/2 rounded-full blur-3xl opacity-50 pointer-events-none" />
+
+                <div className="container-custom relative z-10">
+                    <motion.div
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
                         variants={fadeInUp}
-                        className="text-3xl md:text-[42px] font-bold text-gray-900 mb-12 text-center font-montserrat"
+                        className="text-center mb-12"
                     >
-                        Sectores Objetivo
-                    </motion.h2>
+                        <h2 className="text-3xl md:text-[42px] font-bold text-gray-900 mb-6 font-montserrat">
+                            Sectores Objetivo
+                        </h2>
+                        <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+                            Diseñado para industrias donde el <span className="font-semibold text-primary">control térmico y el alto consumo de agua</span> son factores críticos de rentabilidad.
+                        </p>
+                    </motion.div>
 
-                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-px max-w-6xl mx-auto lg:bg-gray-100 lg:border lg:border-gray-100 lg:rounded-2xl lg:overflow-hidden lg:shadow-[0_2px_20px_-5px_rgba(0,0,0,0.05)]">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                         {[
-                            { name: "Sector Industrial", icon: Factory },
-                            { name: "Industria Agroalimentaria", icon: Utensils },
-                            { name: "Lavanderías Industriales", icon: WashingMachine },
-                            { name: "Sector Hotelero", icon: Hotel },
-                            { name: "Sector Sanitario", icon: Activity },
-                            { name: "Sector Residencial", icon: Home }
+                            { name: "Sector Industrial", desc: "Productores y manufactura de alta exigencia térmica.", icon: Factory },
+                            { name: "Agroalimentaria", desc: "Procesamiento, conservación y envasado seguro.", icon: Utensils },
+                            { name: "Lavanderías Ind.", desc: "Instalaciones de extremo consumo hídrico.", icon: WashingMachine },
+                            { name: "Sector Hotelero", desc: "Complejos turísticos, resorts y cadenas globales.", icon: Hotel },
+                            { name: "Sector Sanitario", desc: "Hospitales, clínicas y centros biomédicos.", icon: Activity },
+                            { name: "Sector Residencial", desc: "Grandes complejos habitacionales centralizados.", icon: Home }
                         ].map((sector, index) => (
                             <motion.div
                                 key={index}
                                 initial="hidden"
                                 whileInView="visible"
                                 viewport={{ once: true }}
-                                variants={fadeInUp}
-                                className="flex flex-col items-center text-center p-6 lg:p-12 hover:bg-gray-50 transition-colors lg:bg-white"
+                                variants={{
+                                    hidden: { opacity: 0, y: 20 },
+                                    visible: { opacity: 1, y: 0, transition: { delay: index * 0.1 } }
+                                }}
+                                className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:border-blue-200 transition-all duration-300 group flex flex-col"
                             >
-                                <div className="w-16 h-16 lg:w-24 lg:h-24 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4 lg:mb-6">
-                                    <sector.icon className="w-8 h-8 lg:w-10 lg:h-10" />
+                                <div className="w-14 h-14 bg-blue-50 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300 rounded-xl flex items-center justify-center mb-6">
+                                    <sector.icon className="w-7 h-7" />
                                 </div>
-                                <h3 className="font-normal text-gray-800 text-base lg:text-lg max-w-[120px] lg:max-w-none mx-auto">{sector.name}</h3>
+                                <h3 className="text-[19px] font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors">{sector.name}</h3>
+                                <p className="text-gray-600 text-[15px] leading-relaxed m-0">{sector.desc}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -412,55 +439,58 @@ export default function OasisContext() {
             </section>
 
             {/* 7. MODELO DE DESPLIEGUE */}
-            <section className="section-padding bg-gray-50 text-gray-900">
-                <div className="container-custom text-center">
+            <section className="section-padding bg-white relative">
+                <div className="container-custom">
                     <motion.div
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
                         variants={fadeInUp}
-                        className="mb-12"
+                        className="text-center mb-16"
                     >
-                        <h2 className="text-3xl md:text-[42px] font-bold mb-6 font-montserrat">Modelo de Despliegue</h2>
-                        <p className="text-gray-600 max-w-2xl mx-auto">
-                            Arquitectura pensada para crecimiento sostenido mediante un modelo híbrido.
+                        <h2 className="text-3xl md:text-[42px] font-bold mb-6 text-gray-900 font-montserrat">Modelo de Despliegue</h2>
+                        <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">
+                            Arquitectura pensada para un crecimiento sostenido e integrado mediante un modelo híbrido puramente industrial.
                         </p>
                     </motion.div>
 
-                    <div className="relative max-w-6xl mx-auto">
-                        {/* Connecting Line (Desktop) */}
-                        <div className="hidden lg:block absolute top-[28px] left-[12%] right-[12%] h-0.5 bg-gray-200 z-0" />
+                    <div className="max-w-6xl mx-auto relative">
+                        {/* Connecting line desktop */}
+                        <div className="hidden lg:block absolute top-[45px] left-[15%] right-[15%] h-[3px] bg-gray-100 z-0">
+                            <div className="absolute top-0 left-0 h-full bg-gradient-to-r from-blue-200 via-primary to-blue-200 w-full opacity-30"></div>
+                        </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 relative z-10">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-6 relative z-10">
                             {[
-                                "Ingeniería aplicada",
-                                "Tecnología industrial modular",
-                                "Servicio técnico especializado",
-                                "Monitorización continua"
+                                { title: "Ingeniería Aplicada", desc: "Diseño técnico a medida y estudio de integración en planta para asegurar la viabilidad del proyecto." },
+                                { title: "Tecnología Modular", desc: "Fabricación de equipos escalables listos para su despliegue y conexión rápida sin parar producción." },
+                                { title: "Servicio Experto", desc: "Despliegue, puesta en marcha y soporte continuo operado por la ingeniería técnica de KOC." },
+                                { title: "Monitorización 4.0", desc: "Control de rendimiento y telemetría de ahorros en tiempo real 24/7 sobre un marco unificado." }
                             ].map((item, index) => (
                                 <motion.div
                                     key={index}
                                     initial="hidden"
                                     whileInView="visible"
                                     viewport={{ once: true }}
-                                    variants={fadeInUp}
-                                    className="flex flex-col items-center group"
+                                    variants={{
+                                        hidden: { opacity: 0, scale: 0.95 },
+                                        visible: { opacity: 1, scale: 1, transition: { delay: index * 0.15 } }
+                                    }}
+                                    className="flex flex-col items-center lg:items-start text-center lg:text-left group relative"
                                 >
-                                    {/* Mobile Card */}
-                                    <div className="lg:hidden bg-white p-6 rounded-xl border border-blue-100 shadow-sm w-full flex items-center gap-3">
-                                        <div className="w-2 h-2 bg-primary rounded-full"></div>
-                                        <span className="font-medium text-gray-800">{item}</span>
+                                    <div className="w-24 h-24 lg:w-[90px] lg:h-[90px] mx-auto lg:mx-0 bg-white border-[6px] border-blue-50 text-gray-400 font-extrabold text-3xl rounded-full flex items-center justify-center mb-6 group-hover:border-primary group-hover:text-primary transition-all duration-300 shadow-sm relative z-20">
+                                        0{index + 1}
+                                    </div>
+                                    <div className="bg-gray-50 p-7 lg:p-6 rounded-3xl border border-transparent w-full h-full hover:bg-white hover:shadow-2xl hover:border-blue-100 hover:-translate-y-2 transition-all duration-300 relative z-10 overflow-hidden group/card">
+
+                                        <div className="relative z-10 flex flex-col h-full">
+                                            <h3 className="text-xl lg:text-[17px] xl:text-lg font-bold text-gray-900 mb-4 group-hover/card:text-primary transition-colors leading-snug">{item.title}</h3>
+                                            <p className="text-gray-600 text-[15px] lg:text-[14px] leading-relaxed">{item.desc}</p>
+                                        </div>
                                     </div>
 
-                                    {/* Desktop Node */}
-                                    <div className="hidden lg:flex flex-col items-center text-center w-full px-4">
-                                        <div className="w-14 h-14 bg-white rounded-full border-4 border-primary shadow-sm mb-6 flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform duration-300">
-                                            <div className="w-4 h-4 bg-primary rounded-full"></div>
-                                        </div>
-                                        <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm w-full min-h-[100px] flex items-center justify-center group-hover:border-blue-200 group-hover:shadow-md transition-all">
-                                            <span className="font-normal text-gray-800 text-lg leading-tight">{item}</span>
-                                        </div>
-                                    </div>
+                                    {/* Mobile connection line inside the loop */}
+                                    {index !== 3 && <div className="lg:hidden absolute top-[48px] left-1/2 -translate-x-1/2 h-[calc(100%+48px)] w-[2px] bg-blue-100 z-0 pointer-events-none"></div>}
                                 </motion.div>
                             ))}
                         </div>

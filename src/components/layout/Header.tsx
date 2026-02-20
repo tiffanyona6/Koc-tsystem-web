@@ -25,7 +25,7 @@ const navLinks: NavLink[] = [
             { name: "TARGA KOC", href: "/targa-koc" },
             { name: "Marlenka 2.0 + Magic Box", href: "/marlenka-magic-box" },
             { name: "Sistema TWT", href: "/sistema-twt" },
-            { name: "Sistema Automático de Atemperado", href: "/sistema-atemperado" },
+            { name: "Sistema de Atemperado Automático", href: "/sistema-atemperado" },
         ]
     },
     { name: "Nosotros", href: "/nosotros" },

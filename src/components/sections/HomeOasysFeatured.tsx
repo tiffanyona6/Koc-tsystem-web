@@ -1,8 +1,29 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
-import { ArrowRight, Lock, TrendingUp } from "lucide-react";
+import { ArrowRight, Lock, X } from "lucide-react";
 
 export function HomeOasysFeatured() {
+    const [isImageOpen, setIsImageOpen] = useState(false);
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    const openLightbox = () => {
+        setIsImageOpen(true);
+        document.body.style.overflow = "hidden";
+    };
+
+    const closeLightbox = () => {
+        setIsImageOpen(false);
+        document.body.style.overflow = "";
+    };
+
     return (
         <section className="relative overflow-hidden bg-white border-y border-gray-100">
             <div className="absolute top-0 right-0 w-1/2 h-full bg-[url('/images/pattern-grid.svg')] opacity-[0.03]" />
@@ -57,21 +78,58 @@ export function HomeOasysFeatured() {
 
                     {/* Image Column (Right on Desktop) - Hidden on Mobile */}
                     <div className="hidden lg:block w-full lg:w-1/2 mt-8 lg:mt-0">
-                        <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] max-h-[650px] rounded-3xl shadow-2xl overflow-hidden group">
-                            {/* IMAGEN PRINCIPAL - Reemplazar la ruta src por la imagen real */}
+                        <div
+                            className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] max-h-[650px] rounded-3xl shadow-2xl overflow-hidden group cursor-pointer"
+                            onClick={openLightbox}
+                        >
+                            {/* IMAGEN PRINCIPAL */}
                             <img
                                 src="/images/projects/proyecto-oasis-project-web-koc.webp"
                                 alt="Infraestructura del proyecto Oasis - Optimización hídrica industrial"
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                             />
 
-                            {/* Optional: subtle overlay gradient for better integration if image is too bright */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            {/* Overlay hover para indicar que es clickeable */}
+                            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <span className="text-white font-medium bg-black/50 px-6 py-2 rounded-full backdrop-blur-sm border border-white/20">
+                                    Ampliar imagen
+                                </span>
+                            </div>
                         </div>
                     </div>
 
                 </div>
             </div>
+
+            {/* Modal / Lightbox */}
+            {mounted && isImageOpen && createPortal(
+                <div
+                    className="fixed inset-0 z-[999999] flex items-center justify-center bg-black/95 p-4 backdrop-blur-sm"
+                    onClick={closeLightbox}
+                >
+                    <button
+                        className="absolute top-4 right-4 md:top-6 md:right-6 lg:top-10 lg:right-10 text-white hover:text-gray-300 transition-colors bg-white/10 p-3 rounded-full hover:bg-white/20 z-50"
+                        onClick={closeLightbox}
+                        aria-label="Cerrar"
+                    >
+                        <X size={28} />
+                    </button>
+
+                    <div
+                        className="relative w-full max-w-6xl h-full flex flex-col items-center justify-center"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <div className="relative w-full h-[80vh] flex items-center justify-center">
+                            <img
+                                src="/images/projects/proyecto-oasis-project-web-koc.webp"
+                                alt="Infraestructura del proyecto Oasis - vista ampliada"
+                                className="w-auto h-auto max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+                            />
+                        </div>
+                    </div>
+                </div>,
+                document.body
+            )}
         </section>
     );
 }
