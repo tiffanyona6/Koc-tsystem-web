@@ -20,8 +20,11 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "KOC Technical System",
-  description: "Soluciones de ingeniería especializadas en energía, agua y control térmico.",
+  title: {
+    default: "KOC Technical System | Soluciones técnicas de alto rendimiento industrial",
+    template: "%s | KOC Technical System"
+  },
+  description: "Soluciones técnicas de alto rendimiento industrial. KOC Technical System se especializa en ingeniería energética, gestión eficiente del agua y control térmico avanzado para optimizar procesos industriales.",
 };
 
 export default function RootLayout({
