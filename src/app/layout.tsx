@@ -25,6 +25,15 @@ export const metadata: Metadata = {
     template: "%s | KOC Technical System"
   },
   description: "Soluciones técnicas de alto rendimiento industrial. KOC Technical System se especializa en ingeniería energética, gestión eficiente del agua y control térmico avanzado para optimizar procesos industriales.",
+  icons: {
+    icon: [
+      {
+        url: "/favicon.png",
+        type: "image/png",
+        sizes: "48x48",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
